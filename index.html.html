@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disponibilidad Horaria - ICPNA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #003366;
+            text-align: center;
+            color: #ffffff;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            background: #ffffff;
+            padding: 20px 0;
+        }
+        .logo {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+        .intro-section {
+            background: #f4f4f4;
+            padding: 40px;
+            margin: 40px 10%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #003366;
+            font-size: 22px; /* Aumenté el tamaño de la letra */
+            font-weight: bold;
+            line-height: 1.8; /* Aumenté el interlineado */
+        }
+        .cta-button {
+            display: inline-block;
+            background: #d50000;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background: #b71c1c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 20px;
+            background: #ffffff;
+            color: #003366;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background: #003366;
+            color: #ffffff;
+            font-size: 22px;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let scheduleBody = document.getElementById("schedule-body");
+            for (let hour = 7; hour <= 22; hour++) {
+                for (let min = 0; min < 60; min += 30) {
+                    let time = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
+                    let row = `<tr><td>${time}</td>`;
+                    for (let i = 0; i < 7; i++) {
+                        row += `<td><input type='checkbox' name='${time}_${i}'></td>`;
+                    }
+                    row += `</tr>`;
+                    scheduleBody.innerHTML += row;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/XkpszK4X/logo-ICPNA-1.png" alt="Logo ICPNA" class="logo">
+    </header>
+    <div class="container">
+        <div class="intro-section">
+            <h2>📝 Selecciona tu Disponibilidad</h2>
+            <p>
+                AQUÍ PODRÁS SELECCIONAR LAS HORAS DISPONIBLES MES A MES.<br>
+                DEBES COMPLETAR ESTA INFORMACIÓN DURANTE LOS 10 PRIMEROS DÍAS CALENDARIOS DE CADA MES.<br>
+                DEBES ELEGIR AL MENOS 16 BLOQUES (30 MIN) POR DÍA SI ERES COLABORADOR FULL TIME<br>
+                Y 8 SI ERES COLABORADOR PART-TIME.
+            </p>
+            <a href="#horario" class="cta-button">CLICK AQUÍ</a>
+        </div>
+
+        <!-- Imagen representando Cultura Laboral -->
+        <div class="image-container">
+            <img src="https://i.ibb.co/hFjNfN0S/articulo-Peru1.jpg" alt="Equipo de trabajo - Cultura laboral">
+        </div>
+
+        <div class="section" id="horario">
+            <h2>🕒 Registra tu disponibilidad</h2>
+            <p>Por favor, marca los horarios en los que estás disponible.</p>
+            <form action="#" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre Completo" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <table>
+                    <tr>
+                        <th>Horario</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sábado</th>
+                        <th>Domingo</th>
+                    </tr>
+                    <tbody id="schedule-body"></tbody>
+                </table>
+                <button type="submit" class="cta-button">Enviar Disponibilidad</button>
+            </form>
+
+            <p class="contact-info">SI TIENES DUDAS O CONSULTAS ESCRÍBENOS A <br>
+                <a href="mailto:culturaicpna@icpna.edu.pe" style="color: #ffffff; text-decoration: none;">culturaicpna@icpna.edu.pe</a> o llámanos al <strong>(01) 7077000</strong></p>
+        </div>
+    </div>
+</body>
+</html>
